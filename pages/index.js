@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/homestyle.module.css";
 
-export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
-  useEffect(() => {
-    async function getPokemon() {
-      const resp = await fetch(
-        "https://h0rhay.github.io/pokemon/pokemon-index.json"
-      );
-      setPokemon(await resp.json());
-    }
-    getPokemon();
-  }, []);
+export async function getServerSideProps() {
+  const resp = await fetch(
+    "https://h0rhay.github.io/pokemon/pokemon-index.json"
+  );
+  return {
+    props: {
+      pokemon: await resp.json(),
+    },
+  };
+}
+
+export default function Home({ pokemon }) {
   return (
     <div className={styles.container}>
       <Head>
