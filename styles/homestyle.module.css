@@ -1,0 +1,17 @@
+.grid {
+  padding: 2rem;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.6rem;
+}
+
+.card img {
+  max-height: 12.5rem;
+}
+
+/* @media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+} */
